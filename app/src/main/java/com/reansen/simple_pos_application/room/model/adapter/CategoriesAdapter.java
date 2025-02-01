@@ -16,6 +16,11 @@ import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     private List<CategoryEntity> categories = new ArrayList<>();
+    private Boolean mode;
+
+    public CategoriesAdapter(Boolean mode) {
+        this.mode = mode;
+    }
 
     @NonNull
     @Override
@@ -44,6 +49,18 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
                 return true;
             }
         });
+
+        //Java Ternary Operator
+        int visibleOrGone = mode ? View.VISIBLE : View.GONE;
+        holder.getBtnSelect().setVisibility(visibleOrGone);
+        holder.getBtnSelect().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoryListener != null) {
+                    categoryListener.onCategorySelect(entity);
+                }
+            }
+        });
     }
 
     @Override
@@ -64,5 +81,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> 
 
     public interface CategoryListener {
         void onCategoryLongClick(CategoryEntity categoryEntity);
+        void onCategorySelect(CategoryEntity categoryEntity);
     }
 }

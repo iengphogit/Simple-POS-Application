@@ -10,6 +10,11 @@
           <theme>@style/Theme.Simpleposapplication</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/category_item_view.xml">
+        <config>
+          <theme>@style/Theme.Simpleposapplication</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -18,9 +23,14 @@
   <component name="ChangeListManager">
     <list default="true" id="328be750-866b-4dc4-9d6a-a884531ec14d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/adapter/CategoriesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/adapter/CategoriesAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/adapter/CategoryViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/adapter/CategoryViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/room/POSDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/room/POSDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/room/entity/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/room/model/room/entity/CategoryEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/CategoriesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/CategoriesActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/CategoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/CategoryActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/ProductActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/ProductActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/category_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/category_item_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +47,12 @@
     </projectState>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -162,12 +178,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/ProductActivity.java</url>
-          <line>147</line>
+          <line>148</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/reansen/simple_pos_application/ui/activity/ProductActivity.java</url>
-          <line>88</line>
+          <line>89</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

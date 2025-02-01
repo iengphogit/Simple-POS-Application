@@ -23,6 +23,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 import com.reansen.simple_pos_application.R;
 import com.reansen.simple_pos_application.room.model.room.POSDatabase;
 import com.reansen.simple_pos_application.room.model.room.dao.ProductDao;
+import com.reansen.simple_pos_application.room.model.room.entity.CategoryEntity;
 import com.reansen.simple_pos_application.room.model.room.entity.ProductEntity;
 import com.reansen.simple_pos_application.ui.Navigator;
 
@@ -177,9 +178,14 @@ public class ProductActivity extends AppCompatActivity {
             });
 
     private final ActivityResultLauncher<Intent> selectCategoryLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == RESULT_OK) {
-                    Toast.makeText(this, "Item selected..!", Toast.LENGTH_SHORT).show();
+            dataResult -> {
+                if (dataResult.getResultCode() == RESULT_OK) {
+                    Intent intent = dataResult.getData();
+                    if (intent != null) {
+                        CategoryEntity entity = (CategoryEntity) intent.getSerializableExtra("result");
+                        if (entity == null) return;
+                        Toast.makeText(this, "Item selected..! => " + entity.name, Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 }

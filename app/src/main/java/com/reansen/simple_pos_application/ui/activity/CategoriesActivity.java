@@ -3,6 +3,7 @@ package com.reansen.simple_pos_application.ui.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -53,10 +54,19 @@ public class CategoriesActivity extends BaseActivity {
 
         Intent newIntent = getIntent();
         if(newIntent != null && newIntent.hasExtra("mode")){
-            Toast.makeText(this, newIntent.getStringExtra("mode"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mode: " + ifSelectionMode(), Toast.LENGTH_SHORT).show();
         }
 
         bindAdapterData();
+    }
+
+
+    private boolean ifSelectionMode(){
+        Intent intent = getIntent();
+        if(intent == null) return false;
+        String mode = intent.getStringExtra("mode");
+        //Todo update mode != null && mode.equals("selection");
+        return !TextUtils.isEmpty(mode);
     }
 
     @Override
@@ -77,13 +87,21 @@ public class CategoriesActivity extends BaseActivity {
             public void run() {
                 List<CategoryEntity> categories = database.categoryDao().getAllCategories();
 
-                CategoriesAdapter adapter = new CategoriesAdapter();
+                CategoriesAdapter adapter = new CategoriesAdapter(ifSelectionMode());
                 adapter.setCategories(categories);
                 adapter.setCategoryListener(new CategoriesAdapter.CategoryListener() {
                     @Override
                     public void onCategoryLongClick(CategoryEntity categoryEntity) {
                         Toast.makeText(CategoriesActivity.this, "Item long clicked: " + categoryEntity.name, Toast.LENGTH_SHORT).show();
                         alertDialog(categoryEntity);
+                    }
+
+                    @Override
+                    public void onCategorySelect(CategoryEntity categoryEntity) {
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("result", categoryEntity);
+                        setResult(RESULT_OK, returnIntent);
+                        finish();
                     }
                 });
                 runOnUiThread(new Runnable() {

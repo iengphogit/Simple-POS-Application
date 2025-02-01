@@ -22,8 +22,9 @@ public abstract class POSDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (POSDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            POSDatabase.class, "pos_database").build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), POSDatabase.class, "pos_database")
+                            .fallbackToDestructiveMigration()
+                            .build();
                 }
             }
         }
