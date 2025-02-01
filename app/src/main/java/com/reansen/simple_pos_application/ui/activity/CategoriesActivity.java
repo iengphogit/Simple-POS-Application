@@ -51,6 +51,10 @@ public class CategoriesActivity extends BaseActivity {
             }
         });
 
+        Intent newIntent = getIntent();
+        if(newIntent != null && newIntent.hasExtra("mode")){
+            Toast.makeText(this, newIntent.getStringExtra("mode"), Toast.LENGTH_SHORT).show();
+        }
 
         bindAdapterData();
     }

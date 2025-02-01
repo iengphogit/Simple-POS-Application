@@ -1,5 +1,6 @@
 package com.reansen.simple_pos_application.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,6 +24,7 @@ import com.reansen.simple_pos_application.R;
 import com.reansen.simple_pos_application.room.model.room.POSDatabase;
 import com.reansen.simple_pos_application.room.model.room.dao.ProductDao;
 import com.reansen.simple_pos_application.room.model.room.entity.ProductEntity;
+import com.reansen.simple_pos_application.ui.Navigator;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -31,7 +34,7 @@ import java.util.concurrent.Executors;
 public class ProductActivity extends AppCompatActivity {
 
     private EditText editTextProductCode, editTextProductName,
-            editTextProductPrice, editTextProductDescription;
+            editTextProductPrice, editTextProductDescription, editTextCategory;
 
     private Button buttonSaveProduct;
 
@@ -114,7 +117,17 @@ public class ProductActivity extends AppCompatActivity {
         editTextProductDescription = findViewById(R.id.editTextProductDescription);
         buttonSaveProduct = findViewById(R.id.buttonSaveProduct);
         actionScan = findViewById(R.id.actionScanBarcode);
+        editTextCategory = findViewById(R.id.editTextCategory);
 
+        Button btnSelectCat = findViewById(R.id.btnSelectCat);
+        btnSelectCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = Navigator.getCategoriesActivity(ProductActivity.this);
+                intent.putExtra("mode", "selection");
+                selectCategoryLauncher.launch(intent);
+            }
+        });
         //Todo listener
 
         editTextProductPrice.addTextChangedListener(new TextWatcher() {
@@ -160,6 +173,13 @@ public class ProductActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                     editTextProductCode.setText(result.getContents());
+                }
+            });
+
+    private final ActivityResultLauncher<Intent> selectCategoryLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Toast.makeText(this, "Item selected..!", Toast.LENGTH_SHORT).show();
                 }
             });
 }
