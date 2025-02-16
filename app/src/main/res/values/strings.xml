@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">simple-pos-application</string>
+    <string name="key_category">KeyCategory</string>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -35,7 +36,8 @@ import java.util.concurrent.Executors;
 public class ProductActivity extends AppCompatActivity {
 
     private EditText editTextProductCode, editTextProductName,
-            editTextProductPrice, editTextProductDescription, editTextCategory;
+            editTextProductPrice, editTextProductDescription;
+    private TextView editTextCategory;
 
     private Button buttonSaveProduct;
 
@@ -185,6 +187,8 @@ public class ProductActivity extends AppCompatActivity {
                         CategoryEntity entity = (CategoryEntity) intent.getSerializableExtra("result");
                         if (entity == null) return;
                         Toast.makeText(this, "Item selected..! => " + entity.name, Toast.LENGTH_SHORT).show();
+                        editTextCategory.setTag(entity.id);
+                        editTextCategory.setText(entity.name);
                     }
                 }
             });
